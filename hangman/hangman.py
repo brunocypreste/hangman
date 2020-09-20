@@ -2,19 +2,8 @@
 
 import random 
 import os
-import sys
 
-def take_word():
-    a = list(open("palavras.txt", "r").split(\n))
-    return random.choice(a)
-class Game():
-    def __init__(self, word):
-        self.word = word
-        self.right_word = []
-        self.wrong_word = []
-    
-    def gallows():
-        gallows = ['''
+gallows = ['''
 
 >>>>>>>>>>Hangman<<<<<<<<<<
 
@@ -73,6 +62,19 @@ O   |
 / \  |
      |
 =========''']
+
+def take_word():
+    with open("hangman\palavras.txt", "rt") as f:
+        a = f.readlines()
+    return a[random.randint(0, len(a))].strip()
+
+class Game:
+    def __init__(self, word):
+        self.word = word
+        self.right_word = []
+        self.wrong_word = []
+    
+    def win(self):
 
 
 if __name__ == "__main__":
